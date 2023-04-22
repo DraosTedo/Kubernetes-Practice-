@@ -1,0 +1,92 @@
+kubectl run 
+
+kubectl cluster-info
+
+kubectl get nodes 
+
+
+Kubernetes pod YAML awayls contains 4 top level fields. !!!!!!
+
+apiVersion: This is the version of the Kuberentes api that you user to create the object 
+
+kind: The kind reffers to the type of object we are trying to create.
+
+metadata: Data aboute the object, Line name, Labels
+
+
+
+spec: Spec is a dictionary, you can add a list name containers
+reason why this property is a list is because the pods can have multiple containers in them...!!!
+
+
+pod creation command: kubectl create -f name of the file
+
+
+kubectl get pods - will show us how many pods are created 
+
+
+kubectl run nginx --image=nginx (This is how to create a pod with the nginx image )
+
+
+kubectl describe pod   (name of the pod) will show us in details the pod, image, label container etc....
+
+
+kubectl get pods -o wide   - will show us all of the pods and to which NODE they are attached to...
+
+
+kubectl deleted pod (name of the pod) this will delete the pod
+
+kubectl run redis --image=redis123 --dry-run -o yaml - (Thi command will create a pod with the name redis and image redis123 in a yaml file, We can then redirect this command in to a file using the > simbol and the name of the file that we want.)
+
+kubectl create - f redis.yaml (This command will create a pod using a yaml file, The examle from above )
+
+Changes to a pod can be done using a text edito like VIM or with the following command kubectl edit (pod name)
+
+After the change is made you will need to aply them using the following command  kubectl apply -f (file name, examle (redis.yaml)) then the changes will be saved..
+
+kubectl get replicationcontroller - will show the list of created replication controllers
+
+kubectl replace -f replicaset-definition.yaml -- EXAMPLE( This will update the file with the new replica's  if you had 3 and  you updated it to 6 you will need to run this command AFTER you updated the file in order to apply the change.!!!)
+another command is  (kubectl scale --replicas=6 -f replicaset-definition.yaml)
+
+kubectl get all--
+====
+
+Rollout Commands
+
+kubectl create - f deployment-definition.yml
+
+kubectl get deployments
+
+kubectl apply -f deployment-definition.yml
+
+kubectl set image deployment/myapp-deployment nginx=nginx1.9.1
+
+kubectl rollout status deployment/myapp-deployment
+
+kubectl rollout history deployment/myapp-deployment
+
+kubectl rollout undo deployment/myapp-dep1
+
+
+====
+
+IP address is assigned to a POD
+
+Services types :
+
+NodePort 
+Cluster IP
+LoadBalancer
+
+
+To get the service run  kubectl get service
+
+kubectl describe service -- this command shows IP address, Ports, targetPorts 
+
+
+
+
+
+
+
